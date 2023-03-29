@@ -1,9 +1,12 @@
-import { increment, decrement } from "./actions/index";
+import { increment, decrement, addvalue } from "./actions/index";
 import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
 
 const App = () => {
+  const [incrementAmount, setIncrementAmount] = useState("2");
   const myState = useSelector((state) => state.counter);
   const dispatch = useDispatch();
+  const incrementValue = Number(incrementAmount);
 
   return (
     <div>
@@ -14,8 +17,14 @@ const App = () => {
         <button onClick={() => dispatch(increment)}>+</button>
       </div>
       <div>
-        <h3>Add Value</h3>
-        <input />
+        <input
+          value={incrementAmount}
+          onChange={(e) => setIncrementAmount(e.target.value)}
+        />
+
+        <button onClick={() => dispatch(addvalue(incrementValue))}>
+          Add Value
+        </button>
       </div>
       <div>
         <h3>Adding Asynchronously</h3>
