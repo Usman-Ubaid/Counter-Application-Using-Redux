@@ -1,1 +1,1 @@
-# Counter-Application-Using-Redux
+# Counter-Redux
